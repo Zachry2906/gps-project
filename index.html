@@ -24,7 +24,7 @@
 
         #map { 
             width: 100%; 
-            height: 100vh;
+            height: 70vh;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             margin-bottom: 10px;
@@ -33,8 +33,15 @@
         .input-container {
             display: flex;
             flex-direction: column;
+            margin: 10px;
             gap: 10px;
             margin-bottom: 10px;
+        }
+
+        label {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-left: 5px;
         }
 
         input {
@@ -101,9 +108,12 @@
 <body>
     <h1>Cari Apapun</h1>
     <div class="input-container">
-        <input type="text" id="search" placeholder="Cari Apapun">
-        <input type="number" id="radius" placeholder="Jarak (meter)">
-        <input type="number" id="limit" placeholder="Batas">
+        <label for="search">Cari Apapun</label>
+        <input type="text" id="search" name="search">
+        <label for="radius">Jarak dari lokasi anda</label>
+        <input type="number" id="radius">
+        <label for="limit">Jumlah</label>
+        <input type="number" id="limit" >
         <button onclick="findNearbyPlaces()">Cari Apapun itu</button>
     </div>
     <div id="map"></div>
