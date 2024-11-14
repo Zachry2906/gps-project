@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cari Sekolah Terdekat</title>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
+    <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #map { 
+            width: 100%; 
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .tt-popup {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tt-popup h3 {
+            margin: 8px;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cari Apapun</h1>
+    <input type="text" id="search" placeholder="Cari Apapun" style="width: 20%; padding: 10px; font-size: 16px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    <input type="number" id="radius" placeholder="Jarak (meter)" style="width: 20%; padding: 10px; font-size: 16px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    <input type="number" id="limit" placeholder="Batas" style="width: 20%; padding: 10px; font-size: 16px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    <button onclick="findNearbyPlaces()">Cari Apapun itu</button>
+    <div id="map" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
