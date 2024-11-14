@@ -1,5 +1,5 @@
 let map = tt.map({
-    key: process.env.API_KEY,
+    key: '62hK7S8DRfGLeA8JreDfxEOkA9nFzAv8',
     container: 'map',
     center: [106.8166, -6.2],
     zoom: 14
