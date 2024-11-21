@@ -49,7 +49,7 @@
                         <div class="form-floating">
                             <input type="number" id="radius" class="form-control" placeholder="1000">
                             <label for="radius">
-                                <i class="bi bi-cursor"></i> Jarak dari lokasi (m)
+                                <i class="bi bi-cursor"></i> Jarak dari lokasi anda (m)
                             </label>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="form-floating">
                             <input type="number" id="limit" class="form-control" placeholder="10">
                             <label for="limit">
-                                <i class="bi bi-list-ol"></i> Jumlah hasil
+                                <i class="bi bi-list-ol"></i> Total lokasi yang ingin ditemukan
                             </label>
                         </div>
                     </div>
@@ -102,6 +102,15 @@ function findNearbyPlaces() {
     markers = [];
 
     const searchQuery = document.getElementById('search').value;
+    if (!searchQuery) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Masukkan kata kunci pencarian',
+            icon: 'error',
+            confirmButtonText: 'Tutup'
+        });
+        return;
+    }
     const radius = document.getElementById('radius').value || 1000;
     const limit = document.getElementById('limit').value || 10;
 
@@ -122,6 +131,8 @@ function findNearbyPlaces() {
                         const marker = new tt.Marker().setLngLat(placePosition).addTo(map);
                         markers.push(marker);
                         marker.getElement().onclick = function() {
+                            markers.forEach(marker => marker.getElement().style.backgroundColor = 'transparent');
+                            marker.getElement().style.backgroundColor = 'red';
                             [lng, lat] = placePosition;
                             console.log(`Latitude: ${lat}, Longitude: ${lng}`);
                             Swal.fire({
@@ -155,6 +166,15 @@ function findNearbyPlaces() {
 
 function calculateRoute() {
             const searchQuery = document.getElementById('search').value;
+            if (!lng || !lat) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Pilih tempat terlebih dahulu',
+                    icon: 'error',
+                    confirmButtonText: 'Tutup'
+                });
+                return;
+            }
             const radius = document.getElementById('radius').value || 1000;
 
             if (navigator.geolocation) {
